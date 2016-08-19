@@ -11,7 +11,8 @@ Depends:
     R (>= 3.2.0)
 Suggests:
     toxboot,
-    tcpl
+    tcpl,
+    testthat
 Imports:
     data.table
 RoxygenNote: 5.0.1
