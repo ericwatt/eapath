@@ -1,3 +1,10 @@
+#' tmat_va
+#'
+#' \code{tmat_va} returns teh connectivity matrix.
+#'
+#'
+#'
+#' @return TMAT matrix of assay connectivities
 tmat_va <- function() {
     temp <- matrix(nrow=NASSAY,ncol=NRECEPTOR)
     temp[] <- 0
@@ -40,5 +47,6 @@ tmat_va <- function() {
     temp[,25] <- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0)
     temp[,26] <- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1)
 
-    TMAT <<- temp
+    TMAT <- temp
+    return(TMAT)
 }

@@ -1,6 +1,14 @@
-# Calculate the least squares solution for one chemical
-# Pathway-specific - update pathway-specific line color, etc. behavior
-
+#' Calculate the least squares solution for one chemical
+#'
+#' \code{er_model} calculates least squares solution
+#'
+#' @param adata cr.mat from \code{prepCR}
+#' @param do.debug logical to run in debug mode. Default F
+#' @param xmin.plot numeric. Default 0.01
+#'
+#' @importFrom stats optim
+#'
+#' @return resmat matrix[nconc rows x NRECEPTOR columns]
 er_model <- function(adata,do.debug=F,xmin.plot=0.01) {
     nconc <- length(CONCLIST)
     nassay <- NASSAY

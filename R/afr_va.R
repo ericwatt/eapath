@@ -1,3 +1,11 @@
+#' Function minimized in model
+#'
+#' \code{afr_va} is the function passed to \code{optim} in \code{er_model}.
+#'
+#' @param x x
+#' @param A A matrix
+#'
+#' @return eret
 afr_va <- function(x,A) {
     Ameas <- A[,1]
     nassay <- NASSAY

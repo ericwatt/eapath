@@ -1,5 +1,10 @@
-# receptor score or AUC
-
+#' Receptor Score
+#'
+#' \code{receptor_score} calculates the receptor score.
+#'
+#' @param x x
+#'
+#' @return score
 receptor_score <- function(x) {
     nuse <- length(x)
     if(nuse<2) return(0)

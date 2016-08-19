@@ -1,10 +1,14 @@
-# prep the concentration-response matrix for a single chemical
-# expect top in range [0,100]
-# ATG = log foldchange top * 25
-#
-# ac50,top,w are vectors of length 18 with values for one instance of one chemical
-# This returns the concentration-response matrix
-
+#' \code{prepCR} preps the concentration-response matrix for a single chemical
+#'
+#' @param dat data.table
+#' @param chem value of \code{code} column to specify the row
+#'
+#' @details ac50,top,w are vectors of length 18 with values for one instance of one chemical
+#'
+#' expect top in range [0,100]
+#' ATG = log foldchange top * 25
+#'
+#' @return cr.mat matrix This returns the concentration-response matrix
 prepCR <- function(dat, chem) {
     ac50 <- as.numeric(dat[code == chem, modl_ga_cols, with = FALSE])
     top  <- as.numeric(dat[code == chem, modl_tp_cols, with = FALSE])
