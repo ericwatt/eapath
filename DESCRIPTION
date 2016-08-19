@@ -7,3 +7,7 @@ Maintainer: Who to complain to <yourfault@somewhere.net>
 Description: More about what it does (maybe more than one line)
 License: What license is it under?
 LazyData: TRUE
+Depends: R (>= 3.2.0)
+Suggests: toxboot,
+    tcpl
+Imports: data.table
