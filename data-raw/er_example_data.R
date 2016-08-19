@@ -20,6 +20,9 @@ aeid_table_full <- tcplLoadAeid(add.fld = c("asid", "asnm"))
 aeids <- aeid_table_full[aenm %in% assays, aeid]
 
 dat_L5 <- tcplLoadData(lvl = 5L, fld = "aeid", val = aeids, type = "mc") %>%
-    tcplPrepOtpt
+    tcplPrepOtpt %>%
+    tcplSubsetChid
 
-#devtools::use_data(erl5data, overwrite = TRUE)
+er_L5_prod_ext_v2 <- dat_L5[, .(chnm, code, m4id, aenm, aeid, hitc, modl_ga, modl_gw, modl_tp)]
+
+devtools::use_data(er_L5_prod_ext_v2, overwrite = TRUE)
