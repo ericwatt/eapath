@@ -19,7 +19,7 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c("code"))
 #' @import data.table
 #' @export
 er_model_light_grouped <- function(dat, group, value){
-    codes <- dat[get(group) == value, code]
-    dat_auc <- rbindlist(lapply(codes, er_model_light, dat = dat))
-    return(dat_auc)
+  codes <- dat[get(group) == value, code]
+  dat_auc <- rbindlist(lapply(codes, er_model_light, dat = dat))
+  return(dat_auc)
 }
