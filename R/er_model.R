@@ -13,7 +13,7 @@ er_model <- function(adata,do.debug=F,xmin.plot=0.01) {
     nconc <- length(CONCLIST)
     nassay <- NASSAY
     adata <- as.data.frame(t(adata))
-    adata <- cbind(adata,TMAT)
+    adata <- cbind(adata,tmat_va())
     conc.names <- c()
     for(i in 1:NCONC) conc.names <- c(conc.names,paste("C",i,sep=""))
     t.names <- c()

@@ -1,5 +1,5 @@
 if(getRversion() >= "2.15.1"){
-    utils::globalVariables(c("modl_ga, modl_tp, hitc, aenm"))
+    utils::globalVariables(c("modl_ga", "modl_tp", "hitc", "aenm"))
 }
 
 #' Cast tcpl output to model format
