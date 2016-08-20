@@ -47,7 +47,7 @@ er_model <- function(adata,do.debug=F,xmin.plot=0.01) {
         if(i>1) start <- res$par
         if(do.debug){
             res <- optim(par     = start,
-                         f       = afr_va,
+                         fn      = afr_va,
                          A       = A,
                          method  = "L-BFGS-B",
                          lower   = lwr,
@@ -55,7 +55,7 @@ er_model <- function(adata,do.debug=F,xmin.plot=0.01) {
                          control = list(maxit=2000))
         }else{
             res <- optim(par     = start,
-                         f       = afr_va,
+                         fn      = afr_va,
                          A       = A,
                          method  = "L-BFGS-B",
                          lower   = lwr,
