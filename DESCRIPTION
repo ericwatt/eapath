@@ -12,7 +12,10 @@ Depends:
 Suggests:
     toxboot,
     tcpl,
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 Imports:
     data.table
 RoxygenNote: 5.0.1
+VignetteBuilder: knitr
