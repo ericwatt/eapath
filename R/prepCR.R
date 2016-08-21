@@ -13,12 +13,7 @@ prepCR <- function(dat, chem) {
   ac50 <- as.numeric(dat[code == chem, modl_ga_cols, with = FALSE])
   top  <- as.numeric(dat[code == chem, modl_tp_cols, with = FALSE])
   w    <- as.numeric(dat[code == chem, modl_gw_cols, with = FALSE])
-  #top[is.na(top)] <- 0
-  #w[is.na(w)] <- 1
-  #ac50[is.na(ac50)] <- 1000000
-  #top[top>1] <- 1
-  cr.mat <- matrix(nrow=length(CONCLIST),ncol=NASSAY)
-  cr.mat[] <- 0
+  cr.mat <- matrix(data = 0, nrow = length(CONCLIST), ncol = NASSAY)
   for(i in 1:length(CONCLIST)) {
     conc <- CONCLIST[i]
     for(j in 1:NASSAY) {
