@@ -19,7 +19,7 @@ penalty <- function(x, penalty_method = "THRESHOLD") {
   } else if(penalty_method == "LASSO"){
     value <- ALPHA * sum(abs(x)) # LASSO regression
   } else {
-    stop("Don't know how to handle penalty method ", penalty_method,
+    stop("Don't know how to handle penalty_method ", penalty_method,
          call. = FALSE)
   }
   return(value)
