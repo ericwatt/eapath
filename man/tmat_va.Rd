@@ -4,12 +4,15 @@
 \alias{tmat_va}
 \title{tmat_va}
 \usage{
-tmat_va()
+tmat_va(pathway = "ER")
+}
+\arguments{
+\item{pathway}{character length 1. Options are "ER" or "AR". Default is "ER"}
 }
 \value{
-TMAT matrix of assay connectivities
+tmat matrix of assay connectivities
 }
 \description{
-\code{tmat_va} returns teh connectivity matrix.
+\code{tmat_va} returns the connectivity matrix.
 }
 
