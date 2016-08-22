@@ -17,3 +17,27 @@ vignette: >
 
 ### Run model
 
+## Differences between ER and AR models
+
+The selection of the ER or AR model causes differences in the following key areas
+
+### Flagged
+* `tmat_va()`. Function that returns a matrix of AUC receptors to calculate and 0 or 1 values for which assays should be included in the given AUC calculation. Specifying pathway = "ER" or pathway = "AR" will cause a different matrix to be returned, corresponding to the specified model.
+
+### Unflagged
+
+* `NCONC`
+* `CONCLIST`
+* `NASSAY`
+* `NRECEPTOR`
+* `NRECEPTOR0`
+* `NRECEPTOR`
+* `ALPHA`
+* `AUCSCALE1`
+* `AUCSCALE2`
+* `assay_order` 
+* `pseudo_receptor_columns` 
+* `auc_names`
+* `modl_ga_cols`
+* `modl_tp_cols`
+* `modl_gw_cols`

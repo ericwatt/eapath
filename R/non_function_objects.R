@@ -1,9 +1,7 @@
-PATHWAY <- "ER"
 NASSAY <- 18
 NRECEPTOR <- 9
 NRECEPTOR0 <- 9
 NRECEPTOR <- 26
-SPECIFIC.AUC.CUTOFF <- 0.1
 
 ALPHA <- 1
 AUCSCALE1 <-  3.8  # put the top of the most active chemical to 1.0
