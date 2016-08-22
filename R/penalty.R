@@ -26,11 +26,11 @@ penalty <- function(x, pathway, penalty_method = "THRESHOLD", alpha = NULL) {
     sumx <- sum(x)
     a <- sumx ** 10
     b <- 0.5**10
-    value <- ALPHA * a/(a + b)
+    value <- alpha * a/(a + b)
   } else if(penalty_method=="RIDGE"){
-    value <- ALPHA * sum(x * x) # ridge regression
+    value <- alpha * sum(x * x) # ridge regression
   } else if(penalty_method == "LASSO"){
-    value <- ALPHA * sum(abs(x)) # LASSO regression
+    value <- alpha * sum(abs(x)) # LASSO regression
   } else {
     stop("Don't know how to handle penalty_method ", penalty_method,
          call. = FALSE)

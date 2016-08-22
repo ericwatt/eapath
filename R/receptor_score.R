@@ -5,7 +5,16 @@
 #' @param x x
 #'
 #' @return score
-receptor_score <- function(x) {
+receptor_score <- function(x, pathway, aucscale2 = NULL) {
+  if (pathway == "ER"){
+    if (is.null(aucscale2)) aucscale2 <- 1.24
+  } else if (pathway == "AR"){
+    if (is.null(aucscale2)) aucscale2 <- 1.24
+  } else {
+    stop("Pathway ", pathway, " is not recognized",
+         call. = FALSE)
+  }
+
   nuse <- length(x)
   if(nuse<2) return(0)
   score <- x[1]
@@ -17,6 +26,6 @@ receptor_score <- function(x) {
   }
   score <- score/nuse
   if(score<0) score <- 0
-  score <- score*AUCSCALE2
+  score <- score*aucscale2
   return(score)
 }

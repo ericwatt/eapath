@@ -4,7 +4,7 @@
 \alias{afr_va}
 \title{Function minimized in model}
 \usage{
-afr_va(x, A)
+afr_va(x, A, nassay, nreceptor, pathway, penalty_method, alpha)
 }
 \arguments{
 \item{x}{x}

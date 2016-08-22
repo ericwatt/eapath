@@ -11,15 +11,9 @@ if(getRversion() >= "2.15.1")  utils::globalVariables(c("code"))
 #' @import data.table
 #' @export
 er_model_light <- function(dat, chem){
-  dat_auc <- as.data.table(
-    as.list(
-      AUCcalc(
-        er_model(
-          prepCR(dat, chem)
-        )
-      )
-    )
-  )
+  resmat <- er_model(dat, chem, pathway = "ER")
+  auc <- AUCcalc(resmat, pathway = "ER")
+  dat_auc <- as.data.table(as.list(auc))
   dat_auc[, code := chem]
   return(dat_auc)
 }

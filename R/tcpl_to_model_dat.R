@@ -20,7 +20,23 @@ if(getRversion() >= "2.15.1"){
 #' @return dat_cast a data.table cast into the correct format for the model
 #'
 #' @import data.table
-tcpl_to_model_dat <- function(dat, assay_order) {
+tcpl_to_model_dat <- function(dat, assay_order, pathway) {
+  if (pathway == "ER"){
+    assay_order <- c("NVS_NR_bER", "NVS_NR_hER", "NVS_NR_mERa", "OT_ER_ERaERa_0480",
+                     "OT_ER_ERaERa_1440", "OT_ER_ERaERb_0480", "OT_ER_ERaERb_1440",
+                     "OT_ER_ERbERb_0480", "OT_ER_ERbERb_1440", "OT_ERa_EREGFP_0120",
+                     "OT_ERa_EREGFP_0480", "ATG_ERa_TRANS_up", "ATG_ERE_CIS_up",
+                     "TOX21_ERa_BLA_Agonist_ratio", "TOX21_ERa_LUC_BG1_Agonist",
+                     "ACEA_T47D_80hr_Positive", "TOX21_ERa_BLA_Antagonist_ratio",
+                     "TOX21_ERa_LUC_BG1_Antagonist")
+    modl_ga_cols <- paste("modl_ga_", assay_order, sep = "")
+    modl_tp_cols <- paste("modl_tp_", assay_order, sep = "")
+    modl_gw_cols <- paste("modl_gw_", assay_order, sep = "")
+  } else if (pathway == "AR"){
+  } else {
+    stop("Pathway ", pathway, " is not recognized",
+         call. = FALSE)
+  }
   #dat <- copy(dat_L5)
   dat[, modl_ga := 10^(modl_ga)] #convert from log to uM
   dat[!(hitc == 1), `:=` (modl_ga = 1000000,

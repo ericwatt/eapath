@@ -4,7 +4,7 @@
 \alias{tcpl_to_model_dat}
 \title{Cast tcpl output to model format}
 \usage{
-tcpl_to_model_dat(dat, assay_order)
+tcpl_to_model_dat(dat, assay_order, pathway)
 }
 \arguments{
 \item{dat}{output from tcpl level 5 data}

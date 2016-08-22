@@ -9,14 +9,14 @@
 #' ATG = log foldchange top * 25
 #'
 #' @return cr.mat matrix This returns the concentration-response matrix
-prepCR <- function(dat, chem) {
+prepCR <- function(dat, chem, conclist, nassay, modl_ga_cols, modl_tp_cols, modl_gw_cols) {
   ac50 <- as.numeric(dat[code == chem, modl_ga_cols, with = FALSE])
   top  <- as.numeric(dat[code == chem, modl_tp_cols, with = FALSE])
   w    <- as.numeric(dat[code == chem, modl_gw_cols, with = FALSE])
-  cr.mat <- matrix(data = 0, nrow = length(CONCLIST), ncol = NASSAY)
-  for(i in 1:length(CONCLIST)) {
-    conc <- CONCLIST[i]
-    for(j in 1:NASSAY) {
+  cr.mat <- matrix(data = 0, nrow = length(conclist), ncol = nassay)
+  for(i in 1:length(conclist)) {
+    conc <- conclist[i]
+    for(j in 1:nassay) {
       ac50j <- as.numeric(ac50[j])
       tj <- as.numeric(top[j])
       wj <- as.numeric(w[j])

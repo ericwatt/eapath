@@ -4,13 +4,13 @@
 \alias{AUCcalc}
 \title{Calculate the area under the curve}
 \usage{
-AUCcalc(resmat)
+AUCcalc(resmat, pathway, aucscale2 = NULL)
 }
 \arguments{
-\item{resmat}{matrix[nconc rows x NRECEPTOR columns]}
+\item{resmat}{matrix[nconc rows x nreceptor columns]}
 }
 \value{
-auc numeric vector length NRECEPTOR of AUC values
+auc numeric vector length nreceptor of AUC values
 }
 \description{
 \code{AUCcalc} calculates the AUC values.

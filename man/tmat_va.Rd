@@ -4,10 +4,10 @@
 \alias{tmat_va}
 \title{tmat_va}
 \usage{
-tmat_va(pathway = "ER")
+tmat_va(pathway, nassay, nreceptor)
 }
 \arguments{
-\item{pathway}{character length 1. Options are "ER" or "AR". Default is "ER"}
+\item{pathway}{character length 1. Options are "ER" or "AR".}
 }
 \value{
 tmat matrix of assay connectivities

@@ -2,12 +2,12 @@
 #'
 #' \code{tmat_va} returns the connectivity matrix.
 #'
-#' @param pathway character length 1. Options are "ER" or "AR". Default is "ER"
+#' @param pathway character length 1. Options are "ER" or "AR".
 #'
 #' @return tmat matrix of assay connectivities
-tmat_va <- function(pathway = "ER") {
+tmat_va <- function(pathway, nassay, nreceptor) {
   if(pathway == "ER"){
-    tmat <- matrix(nrow=NASSAY,ncol=NRECEPTOR)
+    tmat <- matrix(nrow=nassay,ncol=nreceptor)
     tmat[] <- 0
     tmat[,1] <-  c(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0)
     tmat[,2] <-  c(1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,1,1)

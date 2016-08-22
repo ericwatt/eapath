@@ -4,17 +4,17 @@
 \alias{er_model}
 \title{Calculate the least squares solution for one chemical}
 \usage{
-er_model(adata, do.debug = F, xmin.plot = 0.01)
+er_model(dat, code, pathway = "ER", nassay = NULL, conclist = NULL,
+  nreceptor = NULL, aucscale1 = NULL, penalty_method = "THRESHOLD",
+  alpha = NULL, do.debug = F)
 }
 \arguments{
-\item{adata}{cr.mat from \code{prepCR}}
-
 \item{do.debug}{logical to run in debug mode. Default F}
 
-\item{xmin.plot}{numeric. Default 0.01}
+\item{adata}{cr.mat from \code{prepCR}}
 }
 \value{
-resmat matrix[nconc rows x NRECEPTOR columns]
+resmat matrix[nconc rows x nreceptor columns]
 }
 \description{
 \code{er_model} calculates least squares solution

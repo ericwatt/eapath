@@ -4,7 +4,7 @@
 \alias{prepCR}
 \title{\code{prepCR} preps the concentration-response matrix for a single chemical}
 \usage{
-prepCR(dat, chem)
+prepCR(dat, chem, conclist, nassay, modl_ga_cols, modl_tp_cols, modl_gw_cols)
 }
 \arguments{
 \item{dat}{data.table}

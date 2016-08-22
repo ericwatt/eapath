@@ -6,14 +6,13 @@
 #' @param A A matrix
 #'
 #' @return eret
-afr_va <- function(x,A) {
+afr_va <- function(x,A,nassay,nreceptor,pathway,penalty_method,alpha) {
   Ameas <- A[,1]
-  nassay <- NASSAY
-  F <- as.matrix(A[,2:(NRECEPTOR+1)])
-  R <- matrix(nrow=NRECEPTOR,ncol=1)
+  F <- as.matrix(A[,2:(nreceptor+1)])
+  R <- matrix(nrow=nreceptor,ncol=1)
   R[] <- x
   Apred <- F%*%R
-  w <- vector(mode="numeric",length=NASSAY)
+  w <- vector(mode="numeric",length=nassay)
   w[] <- 1
   w[1] <- 1/3
   w[2] <- 1/3
@@ -48,6 +47,6 @@ afr_va <- function(x,A) {
       bot <- bot + w[i]
     }
   }
-  eret <- top/bot/sum(mask) + penalty(R)
+  eret <- top/bot/sum(mask) + penalty(R, pathway = pathway, alpha = alpha, penalty_method = penalty_method)
   return(eret)
 }

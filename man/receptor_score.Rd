@@ -4,7 +4,7 @@
 \alias{receptor_score}
 \title{Receptor Score}
 \usage{
-receptor_score(x)
+receptor_score(x, pathway, aucscale2 = NULL)
 }
 \arguments{
 \item{x}{x}

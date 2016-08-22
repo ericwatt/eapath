@@ -19,24 +19,24 @@ vignette: >
 
 ## Differences between ER and AR models
 
-The selection of the ER or AR model causes differences in the following key areas
+The selection of the ER or AR model causes differences in the following functions and parameters
 
 ### Flagged
 * `tmat_va()`. Function that returns a matrix of AUC receptors to calculate and 0 or 1 values for which assays should be included in the given AUC calculation. Specifying pathway = "ER" or pathway = "AR" will cause a different matrix to be returned, corresponding to the specified model.
-* `alpha`. Formerly the global variable `ALPHA`, this is 1 for the ER model and 0.05 for the AR model. Used in `penalty()` and now given as a parameter for `penalty` with default `NULL`, which gets set to 1 if the ER model or 0.05 if AR.
-
-### Unflagged
-
-* `NCONC`
-* `CONCLIST`
-* `NASSAY`
-* `NRECEPTOR0`
-* `NRECEPTOR`
-* `AUCSCALE1`
-* `AUCSCALE2`
+* `nconc` Formerly the global variable `NCONC`
+* `conclist` Formerly the global variable `CONCLIST`
+* `nassay` Formerly the global variable `NASSAY`
+* `nreceptor` Formerly the global variable `NRECEPTOR`
+* `aucscale1` Formerly the global variable `AUCSCALE1`
+* `aucscale2` Formerly the global variable `AUCSCALE2`
 * `assay_order` 
 * `pseudo_receptor_columns` 
 * `auc_names`
 * `modl_ga_cols`
 * `modl_tp_cols`
 * `modl_gw_cols`
+* `alpha`. Formerly the global variable `ALPHA`, this is 1 for the ER model and 0.05 for the AR model. Used in `penalty()` and now given as a parameter for `penalty` with default `NULL`, which gets set to 1 if the ER model or 0.05 if AR.
+
+
+
+
