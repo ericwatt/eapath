@@ -3,12 +3,25 @@
 #' \code{penalty} returns value of penalty.
 #'
 #' @param x x
+#' @param pathway character flag for 'ER' or 'AR' models
 #' @param penalty_method character specifying which algorithm to use when
 #'   calculating the penalty. Default is "THRESHOLD" with other options "RIDGE"
 #'   and "LASSO".
+#' @param alpha numeric with default NULL which gets set to 1 for ER model or
+#'   0.05 for AR model
 #'
 #' @return value
-penalty <- function(x, penalty_method = "THRESHOLD") {
+penalty <- function(x, pathway, penalty_method = "THRESHOLD", alpha = NULL) {
+  if (is.null(alpha)) {
+    if(pathway == "ER"){
+      alpha <- 1
+    } else if (pathway == "AR"){
+      alpha <- 0.05
+    } else {
+      stop("Pathway ", pathway, " is not recognized",
+           call. = FALSE)
+    }
+  }
   if(penalty_method == "THRESHOLD") {
     sumx <- sum(x)
     a <- sumx ** 10

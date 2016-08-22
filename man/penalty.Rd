@@ -4,14 +4,19 @@
 \alias{penalty}
 \title{Penalty}
 \usage{
-penalty(x, penalty_method = "THRESHOLD")
+penalty(x, pathway, penalty_method = "THRESHOLD", alpha = NULL)
 }
 \arguments{
 \item{x}{x}
 
+\item{pathway}{character flag for 'ER' or 'AR' models}
+
 \item{penalty_method}{character specifying which algorithm to use when
 calculating the penalty. Default is "THRESHOLD" with other options "RIDGE"
 and "LASSO".}
+
+\item{alpha}{numeric with default NULL which gets set to 1 for ER model or
+0.05 for AR model}
 }
 \value{
 value

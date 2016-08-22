@@ -6,9 +6,6 @@
 #'
 #' @return tmat matrix of assay connectivities
 tmat_va <- function(pathway = "ER") {
-  if(!pathway %in% c("ER", "AR")){
-    stop("Pathway not recognized, must be 'ER' or 'AR'")
-  }
   if(pathway == "ER"){
     tmat <- matrix(nrow=NASSAY,ncol=NRECEPTOR)
     tmat[] <- 0
@@ -52,6 +49,9 @@ tmat_va <- function(pathway = "ER") {
     tmat[,26] <- c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1)
   } else if (pathway == "AR"){
     stop("AR not setup yet")
+  } else {
+    stop("Pathway ", pathway, " is not recognized",
+         call. = FALSE)
   }
 
   return(tmat)
