@@ -4,10 +4,14 @@
 \alias{penalty}
 \title{Penalty}
 \usage{
-penalty(x)
+penalty(x, penalty_method = "THRESHOLD")
 }
 \arguments{
 \item{x}{x}
+
+\item{penalty_method}{character specifying which algorithm to use when
+calculating the penalty. Default is "THRESHOLD" with other options "RIDGE"
+and "LASSO".}
 }
 \value{
 value

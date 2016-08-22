@@ -5,10 +5,6 @@ NRECEPTOR0 <- 9
 NRECEPTOR <- 26
 SPECIFIC.AUC.CUTOFF <- 0.1
 
-#PENALTY.METHOD <<- "RIDGE"
-#PENALTY.METHOD <<- "LASSO"
-PENALTY.METHOD <- "THRESHOLD"
-
 ALPHA <- 1
 AUCSCALE1 <-  3.8  # put the top of the most active chemical to 1.0
 AUCSCALE2 <-  1.24 # makes the top AUC==1.0
