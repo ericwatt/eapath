@@ -33,6 +33,13 @@ tcpl_to_model_dat <- function(dat, assay_order, pathway) {
     modl_tp_cols <- paste("modl_tp_", assay_order, sep = "")
     modl_gw_cols <- paste("modl_gw_", assay_order, sep = "")
   } else if (pathway == "AR"){
+    assay_order <- c("NVS_NR_hAR", "NVS_NR_cAR", "NVS_NR_rAR", "OT_AR_ARSRC1_0480",
+                     "OT_AR_ARSRC1_0960", "OT_AR_ARELUC_AG_1440", "ATG_AR_TRANS_up",
+                     "TOX21_AR_BLA_Agonist_ratio", "TOX21_AR_LUC_MDAKB2_Agonist",
+                     "TOX21_AR_BLA_Antagonist_ratio", "TOX21_AR_LUC_MDAKB2_Antagonist2")
+    modl_ga_cols <- paste("modl_ga_", assay_order, sep = "")
+    modl_tp_cols <- paste("modl_tp_", assay_order, sep = "")
+    modl_gw_cols <- paste("modl_gw_", assay_order, sep = "")
   } else {
     stop("Pathway ", pathway, " is not recognized",
          call. = FALSE)
