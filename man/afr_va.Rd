@@ -10,6 +10,16 @@ afr_va(x, A, nassay, nreceptor, pathway, penalty_method, alpha)
 \item{x}{x}
 
 \item{A}{A matrix}
+
+\item{nassay}{integer}
+
+\item{nreceptor}{integer}
+
+\item{pathway}{character flag, "ER" or "AR"}
+
+\item{penalty_method}{character}
+
+\item{alpha}{numeric}
 }
 \value{
 eret

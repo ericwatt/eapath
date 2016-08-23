@@ -4,9 +4,14 @@
 #'
 #' @param x x
 #' @param A A matrix
+#' @param nassay integer
+#' @param nreceptor integer
+#' @param pathway character flag, "ER" or "AR"
+#' @param penalty_method character
+#' @param alpha numeric
 #'
 #' @return eret
-afr_va <- function(x,A,nassay,nreceptor,pathway,penalty_method,alpha) {
+afr_va <- function(x, A, nassay, nreceptor, pathway, penalty_method, alpha) {
   Ameas <- A[,1]
   F <- as.matrix(A[,2:(nreceptor+1)])
   R <- matrix(nrow=nreceptor,ncol=1)

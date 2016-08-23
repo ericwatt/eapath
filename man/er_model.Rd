@@ -9,9 +9,25 @@ er_model(dat, code, pathway = "ER", nassay = NULL, conclist = NULL,
   alpha = NULL, do.debug = F)
 }
 \arguments{
-\item{do.debug}{logical to run in debug mode. Default F}
+\item{dat}{data.table from tcpl_to_model_dat_boot}
 
-\item{adata}{cr.mat from \code{prepCR}}
+\item{code}{string chemical}
+
+\item{pathway}{string}
+
+\item{nassay}{numeric number of assays}
+
+\item{conclist}{numeric vector}
+
+\item{nreceptor}{numeric}
+
+\item{aucscale1}{numeric}
+
+\item{penalty_method, }{character, options are THRESHOLD (default),}
+
+\item{alpha}{numeric, default NULL will be set to pathway specific defaults}
+
+\item{do.debug}{logical to run in debug mode. Default F}
 }
 \value{
 resmat matrix[nconc rows x nreceptor columns]

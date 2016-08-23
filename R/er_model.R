@@ -2,7 +2,15 @@
 #'
 #' \code{er_model} calculates least squares solution
 #'
-#' @param adata cr.mat from \code{prepCR}
+#' @param dat data.table from tcpl_to_model_dat_boot
+#' @param code string chemical
+#' @param pathway string
+#' @param nassay numeric number of assays
+#' @param conclist numeric vector
+#' @param nreceptor numeric
+#' @param aucscale1 numeric
+#' @param penalty_method, character, options are THRESHOLD (default),
+#' @param alpha numeric, default NULL will be set to pathway specific defaults
 #' @param do.debug logical to run in debug mode. Default F
 #'
 #' @importFrom stats optim
