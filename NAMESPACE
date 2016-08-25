@@ -2,5 +2,6 @@
 
 export(er_model_light)
 export(er_model_light_grouped)
+export(tcpl_to_model_dat)
 import(data.table)
 importFrom(stats,optim)

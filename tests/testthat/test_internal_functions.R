@@ -2,7 +2,7 @@ library(eapath)
 library(data.table)
 context("Non exported functions working")
 
-test_that("All functions working", {
+test_that("All functions working ER", {
   assay_order <- c("NVS_NR_bER", "NVS_NR_hER", "NVS_NR_mERa", "OT_ER_ERaERa_0480",
     "OT_ER_ERaERa_1440", "OT_ER_ERaERb_0480", "OT_ER_ERaERb_1440", "OT_ER_ERbERb_0480",
     "OT_ER_ERbERb_1440", "OT_ERa_EREGFP_0120", "OT_ERa_EREGFP_0480", "ATG_ERa_TRANS_up",
@@ -21,9 +21,38 @@ test_that("All functions working", {
   modl_tp_cols <- paste("modl_tp_", assay_order, sep = "")
   modl_gw_cols <- paste("modl_gw_", assay_order, sep = "")
 
-  dat_cast <- tcpl_to_model_dat(er_L5_prod_ext_v2, assay_order = assay_order, pathway = "ER")
+  dat_cast <- tcpl_to_model_dat(er_L5_prod_ext_v2, pathway = "ER")
   cr.mat <- prepCR(dat_cast, chem = "C500389", conclist = conclist, nassay = 18,
     modl_ga_cols, modl_tp_cols, modl_gw_cols)
+  resmat <- er_model(dat_cast, "C500389", "ER")
+  aucval <- AUCcalc(resmat, pathway = "ER")
+  # dat_return <- as.data.table(as.list(aucval)) setnames(dat_return, auc_names[1:26])
+
+  expect_is(dat_cast, "data.table")
+  expect_is(cr.mat, "matrix")
+  expect_is(resmat, 'data.frame')
+  expect_is(aucval, 'numeric')
+})
+
+test_that("All functions working AR", {
+  assay_order <- c("NVS_NR_hAR", "NVS_NR_cAR", "NVS_NR_rAR",
+                   "OT_AR_ARSRC1_0480", "OT_AR_ARSRC1_0960",
+                   "OT_AR_ARELUC_AG_1440", "ATG_AR_TRANS_up",
+                   "TOX21_AR_BLA_Agonist_ratio",
+                   "TOX21_AR_LUC_MDAKB2_Agonist",
+                   "TOX21_AR_BLA_Antagonist_ratio",
+                   "TOX21_AR_LUC_MDAKB2_Antagonist2")
+
+  conclist <- c(0.0122, 0.0244, 0.0488, 0.0977, 0.195, 0.391, 0.781, 1.56,
+                3.125, 6.25, 12.5, 25, 50, 100)
+
+  modl_ga_cols <- paste("modl_ga_", assay_order, sep = "")
+  modl_tp_cols <- paste("modl_tp_", assay_order, sep = "")
+  modl_gw_cols <- paste("modl_gw_", assay_order, sep = "")
+
+  dat_cast <- eapath:::tcpl_to_model_dat(ar_L5_prod_ext_v2, pathway = "AR")
+  cr.mat <- eapath:::prepCR(dat_cast, chem = "C68962", conclist = conclist, nassay = length(assay_order),
+                   modl_ga_cols, modl_tp_cols, modl_gw_cols)
   resmat <- er_model(dat_cast, "C500389", "ER")
   aucval <- AUCcalc(resmat, pathway = "ER")
   # dat_return <- as.data.table(as.list(aucval)) setnames(dat_return, auc_names[1:26])

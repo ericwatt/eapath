@@ -4,12 +4,12 @@
 \alias{tcpl_to_model_dat}
 \title{Cast tcpl output to model format}
 \usage{
-tcpl_to_model_dat(dat, assay_order, pathway)
+tcpl_to_model_dat(dat, pathway)
 }
 \arguments{
 \item{dat}{output from tcpl level 5 data}
 
-\item{assay_order}{order of assays}
+\item{pathway}{string, specify ER or AR}
 }
 \value{
 dat_cast a data.table cast into the correct format for the model

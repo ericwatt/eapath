@@ -7,7 +7,7 @@ if(getRversion() >= "2.15.1"){
 #' \code{tcpl_to_model_dat} preps tcpl output for model input.
 #'
 #' @param dat output from tcpl level 5 data
-#' @param assay_order order of assays
+#' @param pathway string, specify ER or AR
 #'
 #' @details # This function is to take a pipeline formatted data.table
 #' (long format, one m4id per row)
@@ -20,7 +20,8 @@ if(getRversion() >= "2.15.1"){
 #' @return dat_cast a data.table cast into the correct format for the model
 #'
 #' @import data.table
-tcpl_to_model_dat <- function(dat, assay_order, pathway) {
+#' @export
+tcpl_to_model_dat <- function(dat, pathway) {
   if (pathway == "ER"){
     assay_order <- c("NVS_NR_bER", "NVS_NR_hER", "NVS_NR_mERa", "OT_ER_ERaERa_0480",
                      "OT_ER_ERaERa_1440", "OT_ER_ERaERb_0480", "OT_ER_ERaERb_1440",
@@ -44,13 +45,14 @@ tcpl_to_model_dat <- function(dat, assay_order, pathway) {
     stop("Pathway ", pathway, " is not recognized",
          call. = FALSE)
   }
-  #dat <- copy(dat_L5)
+  dat <- copy(dat)
   dat[, modl_ga := 10^(modl_ga)] #convert from log to uM
   dat[!(hitc == 1), `:=` (modl_ga = 1000000,
                           modl_tp = 0,
                           modl_gw = 1)]
   dat[modl_tp > 1000, modl_tp := 0]
-  dat[aenm %in% c("ATG_ERa_TRANS_up", "ATG_ERE_CIS_up"), modl_tp := modl_tp * 25]
+  dat[aenm %in% c("ATG_ERa_TRANS_up", "ATG_ERE_CIS_up", "ATG_AR_TRANS_up"),
+      modl_tp := modl_tp * 25]
   dat[, modl_tp := modl_tp / 100]
   dat[modl_tp > 1, modl_tp := 1]
 
