@@ -8,7 +8,8 @@ test_that("Expected AUC ER values", {
   codes <- c("C500389", "C100005", "C57636", "C10161338")
   auc_results <- lapply(codes,
                         er_model_light,
-                        dat = dat_cast)
+                        dat = dat_cast,
+                        pathway = "ER")
 
   dat_auc <- rbindlist(auc_results)
 
@@ -32,7 +33,7 @@ test_that("Expected AUC ER values", {
                tolerance = 1e-7, scale = 1)
 })
 
-test_that("Expected AUC ER values", {
+test_that("Expected AUC AR values", {
   dat_cast <- tcpl_to_model_dat(ar_L5_prod_ext_v2, pathway = "AR")
   codes <- c("C68962")
   auc_results <- lapply(codes,
@@ -53,5 +54,5 @@ test_that("Expected AUC ER values", {
   setnames(dat_auc, auc_names)
 
   expect_equal(dat_auc[code == "C68962", AUC.Agonist], 0.941,
-               tolerance = 1e-7, scale = 1)
+               tolerance = 1e-3, scale = 1)
 })

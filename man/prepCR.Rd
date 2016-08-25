@@ -10,6 +10,16 @@ prepCR(dat, chem, conclist, nassay, modl_ga_cols, modl_tp_cols, modl_gw_cols)
 \item{dat}{data.table}
 
 \item{chem}{value of \code{code} column to specify the row}
+
+\item{conclist}{numeric vector}
+
+\item{nassay}{integer length 1}
+
+\item{modl_ga_cols}{character vector}
+
+\item{modl_tp_cols}{character vector}
+
+\item{modl_gw_cols}{character vector}
 }
 \value{
 cr.mat matrix This returns the concentration-response matrix

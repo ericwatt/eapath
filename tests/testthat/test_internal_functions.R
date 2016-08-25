@@ -50,11 +50,11 @@ test_that("All functions working AR", {
   modl_tp_cols <- paste("modl_tp_", assay_order, sep = "")
   modl_gw_cols <- paste("modl_gw_", assay_order, sep = "")
 
-  dat_cast <- eapath:::tcpl_to_model_dat(ar_L5_prod_ext_v2, pathway = "AR")
-  cr.mat <- eapath:::prepCR(dat_cast, chem = "C68962", conclist = conclist, nassay = length(assay_order),
+  dat_cast <- tcpl_to_model_dat(ar_L5_prod_ext_v2, pathway = "AR")
+  cr.mat <- prepCR(dat_cast, chem = "C68962", conclist = conclist, nassay = length(assay_order),
                    modl_ga_cols, modl_tp_cols, modl_gw_cols)
-  resmat <- er_model(dat_cast, "C500389", "ER")
-  aucval <- AUCcalc(resmat, pathway = "ER")
+  resmat <- er_model(dat_cast, "C500389", "AR")
+  aucval <- AUCcalc(resmat, pathway = "AR")
   # dat_return <- as.data.table(as.list(aucval)) setnames(dat_return, auc_names[1:26])
 
   expect_is(dat_cast, "data.table")

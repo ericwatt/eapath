@@ -3,6 +3,9 @@
 #' \code{receptor_score} calculates the receptor score.
 #'
 #' @param x x
+#' @param pathway ER or AR
+#' @param aucscale Default of NULL will be reset to pathway specific defaults
+#'   for scaling AUC values
 #'
 #' @return score
 receptor_score <- function(x, pathway, aucscale2 = NULL) {
