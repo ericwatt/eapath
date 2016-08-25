@@ -46,6 +46,9 @@ tcpl_to_model_dat <- function(dat, pathway) {
          call. = FALSE)
   }
   dat <- copy(dat)
+  dat[, aenm := factor(aenm, level = assay_order)]
+  setorder(dat_ar, aenm)
+
   dat[, modl_ga := 10^(modl_ga)] #convert from log to uM
   dat[!(hitc == 1), `:=` (modl_ga = 1000000,
                           modl_tp = 0,
