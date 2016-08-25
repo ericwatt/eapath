@@ -34,7 +34,7 @@ test_that("Expected AUC ER values", {
 })
 
 test_that("Expected AUC AR values", {
-  dat_cast <- tcpl_to_model_dat(ar_L5_prod_ext_v2, pathway = "AR")
+  dat_cast <- tcpl_to_model_dat(ar_L5_invitrodb, pathway = "AR")
   codes <- c("C68962")
   auc_results <- lapply(codes,
                         er_model_light,
