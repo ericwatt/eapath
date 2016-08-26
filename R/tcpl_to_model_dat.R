@@ -46,8 +46,8 @@ tcpl_to_model_dat <- function(dat, pathway) {
          call. = FALSE)
   }
   dat <- copy(dat)
-  dat[, aenm := factor(aenm, level = assay_order)]
-  setorder(dat_ar, aenm)
+  dat[, aenm := factor(aenm, levels = assay_order)]
+  setorder(dat, aenm)
 
   dat[aenm %in% c("NVS_NR_hAR", "NVS_NR_cAR") & modl_tp < 50,
       hitc := 0]
