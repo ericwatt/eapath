@@ -49,7 +49,7 @@ tcpl_to_model_dat <- function(dat, pathway) {
   dat[, aenm := factor(aenm, level = assay_order)]
   setorder(dat_ar, aenm)
 
-  dat[aenm %in% c("NVS_NR_hAR", "NVS_NR_cAR", "NVS_NR_rAR"),
+  dat[aenm %in% c("NVS_NR_hAR", "NVS_NR_cAR", "NVS_NR_rAR") & modl_tp < 50,
       hitc := 0]
 
   dat[, modl_ga := 10^(modl_ga)] #convert from log to uM
