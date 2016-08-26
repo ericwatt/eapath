@@ -51,6 +51,8 @@ tcpl_to_model_dat <- function(dat, pathway) {
 
   dat[aenm %in% c("NVS_NR_hAR", "NVS_NR_cAR") & modl_tp < 50,
       hitc := 0]
+  dat[aenm %in% c("NVS_NR_hAR", "NVS_NR_cAR") & resp_max < 50 & modl_ga < 1,
+      hitc := 0]
 
   dat[, modl_ga := 10^(modl_ga)] #convert from log to uM
   dat[!(hitc == 1), `:=` (modl_ga = 1000000,
