@@ -11,7 +11,7 @@ receptor_score(x, pathway, aucscale2 = NULL)
 
 \item{pathway}{ER or AR}
 
-\item{aucscale}{Default of NULL will be reset to pathway specific defaults
+\item{aucscale2}{Default of NULL will be reset to pathway specific defaults
 for scaling AUC values}
 }
 \value{

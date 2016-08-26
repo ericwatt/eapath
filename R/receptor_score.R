@@ -4,7 +4,7 @@
 #'
 #' @param x x
 #' @param pathway ER or AR
-#' @param aucscale Default of NULL will be reset to pathway specific defaults
+#' @param aucscale2 Default of NULL will be reset to pathway specific defaults
 #'   for scaling AUC values
 #'
 #' @return score
