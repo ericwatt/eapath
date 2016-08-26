@@ -26,7 +26,7 @@ dat_L5 <- tcplLoadData(lvl = 5L, fld = "aeid",
     tcplSubsetChid
 
 ar_L5_invitrodb <- dat_L5[, .(chnm, code, m4id, aenm, aeid, hitc, modl_ga,
-                              modl_gw, modl_tp)]
+                              modl_gw, modl_tp, resp_max)]
 
 devtools::use_data(ar_L5_invitrodb, overwrite = TRUE)
 
@@ -45,6 +45,6 @@ dat_L5_viability <- tcplLoadData(lvl = 5L, fld = "aeid",
 
 ar_L5_invitrodb_viability <- dat_L5_viability[, .(chnm, code, m4id, aenm, aeid,
                                                   hitc, modl_ga, modl_gw,
-                                                  modl_tp)]
+                                                  modl_tp, resp_max)]
 
 devtools::use_data(ar_L5_invitrodb_viability, overwrite = TRUE)
