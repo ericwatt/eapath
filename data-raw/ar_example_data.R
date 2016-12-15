@@ -19,10 +19,32 @@ assays <- c("NVS_NR_hAR", "NVS_NR_cAR", "NVS_NR_rAR",
 aeid_table_full <- tcplLoadAeid(add.fld = c("asid", "asnm"))
 aeids <- aeid_table_full[aenm %in% assays, aeid]
 
-dat_L5 <- tcplLoadData(lvl = 5L, fld = "aeid", val = aeids, type = "mc") %>%
+dat_L5 <- tcplLoadData(lvl = 5L, fld = "aeid",
+                       val = aeids,
+                       type = "mc") %>%
     tcplPrepOtpt %>%
     tcplSubsetChid
 
-ar_L5_prod_ext_v2 <- dat_L5[, .(chnm, code, m4id, aenm, aeid, hitc, modl_ga, modl_gw, modl_tp)]
+ar_L5_invitrodb <- dat_L5[, .(chnm, code, m4id, aenm, aeid, hitc, modl_ga,
+                              modl_gw, modl_tp, resp_max)]
 
-devtools::use_data(ar_L5_prod_ext_v2, overwrite = TRUE)
+devtools::use_data(ar_L5_invitrodb, overwrite = TRUE)
+
+# Get viability data for TOX21 Antagonist assays
+
+assays_viability <- c("TOX21_AR_BLA_Antagonist_viability",
+            "TOX21_AR_LUC_MDAKB2_Antagonist2_viability")
+
+aeids_viability <- aeid_table_full[aenm %in% assays_viability, aeid]
+
+dat_L5_viability <- tcplLoadData(lvl = 5L, fld = "aeid",
+                                 val = aeids_viability,
+                                 type = "mc") %>%
+  tcplPrepOtpt %>%
+  tcplSubsetChid
+
+ar_L5_invitrodb_viability <- dat_L5_viability[, .(chnm, code, m4id, aenm, aeid,
+                                                  hitc, modl_ga, modl_gw,
+                                                  modl_tp, resp_max)]
+
+devtools::use_data(ar_L5_invitrodb_viability, overwrite = TRUE)

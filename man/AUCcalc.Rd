@@ -8,6 +8,11 @@ AUCcalc(resmat, pathway, aucscale2 = NULL)
 }
 \arguments{
 \item{resmat}{matrix[nconc rows x nreceptor columns]}
+
+\item{pathway}{pathway ER or AR}
+
+\item{aucscale2}{scaling factor to pass to \code{\link{receptor_score}}.
+Default of NULL will be reset to pathway specific defaults}
 }
 \value{
 auc numeric vector length nreceptor of AUC values

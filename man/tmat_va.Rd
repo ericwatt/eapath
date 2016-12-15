@@ -8,6 +8,10 @@ tmat_va(pathway, nassay, nreceptor)
 }
 \arguments{
 \item{pathway}{character length 1. Options are "ER" or "AR".}
+
+\item{nassay}{integer length 1}
+
+\item{nreceptor}{integer length 1}
 }
 \value{
 tmat matrix of assay connectivities

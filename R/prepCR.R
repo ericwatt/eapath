@@ -2,6 +2,11 @@
 #'
 #' @param dat data.table
 #' @param chem value of \code{code} column to specify the row
+#' @param conclist numeric vector
+#' @param nassay integer length 1
+#' @param modl_ga_cols character vector
+#' @param modl_tp_cols character vector
+#' @param modl_gw_cols character vector
 #'
 #' @details ac50,top,w are vectors of length 18 with values for one instance of one chemical
 #'

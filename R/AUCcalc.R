@@ -3,6 +3,9 @@
 #' \code{AUCcalc} calculates the AUC values.
 #'
 #' @param resmat matrix[nconc rows x nreceptor columns]
+#' @param pathway pathway ER or AR
+#' @param aucscale2 scaling factor to pass to \code{\link{receptor_score}}.
+#'   Default of NULL will be reset to pathway specific defaults
 #'
 #' @return auc numeric vector length nreceptor of AUC values
 AUCcalc <- function(resmat, pathway, aucscale2 = NULL) {

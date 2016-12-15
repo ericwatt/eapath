@@ -3,6 +3,8 @@
 #' \code{tmat_va} returns the connectivity matrix.
 #'
 #' @param pathway character length 1. Options are "ER" or "AR".
+#' @param nassay integer length 1
+#' @param nreceptor integer length 1
 #'
 #' @return tmat matrix of assay connectivities
 tmat_va <- function(pathway, nassay, nreceptor) {

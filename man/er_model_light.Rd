@@ -4,12 +4,14 @@
 \alias{er_model_light}
 \title{ER Model Light}
 \usage{
-er_model_light(dat, chem)
+er_model_light(dat, chem, pathway)
 }
 \arguments{
 \item{dat}{data.table returned by \code{tcpl_to_model_dat}}
 
 \item{chem}{the value of column code to specify the row to perform the calculation on.}
+
+\item{pathway}{flag for ER or AR}
 }
 \value{
 dat_auc data.table of AUC values
