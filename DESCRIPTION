@@ -27,7 +27,8 @@ Suggests:
     tcpl,
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    covr
 Imports:
     data.table
 RoxygenNote: 5.0.1
