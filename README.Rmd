@@ -8,10 +8,70 @@ output:
 
 [![Travis-CI Build Status](https://travis-ci.org/ericwatt/eapath.svg?branch=master)](https://travis-ci.org/ericwatt/eapath)
 [![Coverage Status](https://img.shields.io/codecov/c/github/ericwatt/eapath/master.svg)](https://codecov.io/github/ericwatt/eapath?branch=master)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/eapath)](https://cran.r-project.org/package=eapath)
+
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "README-"
 )
+library(eapath)
+library(pander)
+library(data.table)
+```
+
+## eapath: Computational Models for Estrogen and Androgen Receptor Activity
+
+eapath contains both data and code to calculate estrogen and androgen AUC values. 
+It can be installed using devtools:
+
+```
+devtools::install_github("ericwatt/eapath")
+```
+
+## Estrogen receptor calculation
+
+The package includes all ToxCast data for ER assays. 
+This can be accessed in `er_L5_prod_ext_v2`.
+
+```{r}
+pander(head(er_L5_prod_ext_v2), split.table = Inf)
+```
+
+The first step is to restructure the data using function `tcpl_to_model_dat`.
+
+```{r}
+dat_cast <- tcpl_to_model_dat(er_L5_prod_ext_v2, pathway = "ER")
+```
+
+This wide format table can now be passed to the function `er_model_light`.
+The example below performs the calculation for 4 chemicals.
+
+```{r}
+  codes <- c("C500389", "C100005", "C57636", "C10161338")
+  auc_results <- lapply(codes,
+                        er_model_light,
+                        dat = dat_cast,
+                        pathway = "ER")
+
+  dat_auc <- rbindlist(auc_results)
+```
+
+Then the columns are named
+
+```{r}
+  pseudo_receptor_columns <- c("AUC.R3", "AUC.R4", "AUC.R5", "AUC.R6", "AUC.R7", "AUC.R8",
+                               "AUC.R9", "AUC.A1", "AUC.A2", "AUC.A3", "AUC.A4", "AUC.A5", "AUC.A6",
+                               "AUC.A7", "AUC.A8", "AUC.A9", "AUC.A10", "AUC.A11", "AUC.A12",
+                               "AUC.A13", "AUC.A14", "AUC.A15", "AUC.A17", "AUC.A18")
+
+  auc_names <- c("AUC.Agonist", "AUC.Antagonist",
+                 pseudo_receptor_columns, "code")
+
+  setnames(dat_auc, auc_names)
+```
+
+```{r}
+pander(dat_auc[, .(code, AUC.Agonist, AUC.Antagonist)])
 ```
