@@ -4,7 +4,7 @@
 \alias{er_model_light_grouped}
 \title{ER Model Light Grouped}
 \usage{
-er_model_light_grouped(dat, group, value)
+er_model_light_grouped(dat, group, value, pathway)
 }
 \arguments{
 \item{dat}{data.table returned by \code{tcpl_to_model_dat}}
@@ -13,6 +13,8 @@ er_model_light_grouped(dat, group, value)
 table with column code having multiple rows.}
 
 \item{value}{value to subset the group column by}
+
+\item{pathway}{specify ER or AR}
 }
 \value{
 dat_auc data.table of AUC values

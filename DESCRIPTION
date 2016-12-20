@@ -1,11 +1,24 @@
 Package: eapath
 Type: Package
-Title: What the Package Does (Title Case)
-Version: 0.1.0.9000
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Title: Computational Models for Estrogen and Androgen Receptor Activity
+Version: 0.1.1.9000
+Date: 2016-12-15
+Authors@R: c(person(c("Richard", "S."), "Judson",
+                    email = "Judson.Richard@epa.gov",
+                    role = "aut"),
+             person(c("Nicole", "C."), "Kleinstreuer",
+                    email = "nicole.kleinstreuer@nih.gov",
+                    role = "aut"),
+             person(c("Eric", "D."), "Watt",
+                    email = "eric@ericdwatt.com",
+                    role = c("aut", "cre")))
+URL: https://github.com/ericwatt/eapath
+BugReports: https://github.com/ericwatt/eapath/issues
+Description: Provides methods to calculated area under the curve (AUC) for
+    estrogen (ER) and androgen (AR) models built on 'ToxCast' data. Data
+    necessary to run the models for published chemicals is included for both ER
+    and AR assays.
+License: MIT + file LICENSE
 LazyData: TRUE
 Depends:
     R (>= 3.2.0)
