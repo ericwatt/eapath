@@ -1,6 +1,8 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 [![Travis-CI Build Status](https://travis-ci.org/ericwatt/eapath.svg?branch=master)](https://travis-ci.org/ericwatt/eapath) [![Coverage Status](https://img.shields.io/codecov/c/github/ericwatt/eapath/master.svg)](https://codecov.io/github/ericwatt/eapath?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/eapath)](https://cran.r-project.org/package=eapath)
 
+    ## Warning: package 'data.table' was built under R version 3.3.2
+
 eapath: Computational Models for Estrogen and Androgen Receptor Activity
 ------------------------------------------------------------------------
 
@@ -180,6 +182,51 @@ pander(dat_auc[, .(code, AUC.Agonist, AUC.Antagonist)])
 <tr class="even">
 <td align="center">C10161338</td>
 <td align="center">0.5297</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+
+Androgen receptor calculation
+-----------------------------
+
+While the pathway and assay lists are different, the AR model is run by the user in much the same way as the ER model. One additional change is that the assay hitcalls need to be filtered by the viability assays. Both datasets needed to do this are included, `ar_L5_invitrodb` contains the data for the 11 assays to run the model and `ar_L5_invitrodb_viability` has the viability data from `TOX21_AR_BLA_Antagonist_viability` and `TOX21_AR_LUC_MDAKB2_Antagonist2_viability` assays which are used to filter the hit calls for T`OX21_AR_BLA_Antagonist_ratio` and `TOX21_AR_LUC_MDAKB2_Antagonist2` assays.
+
+``` r
+  dat <- via_filter(ar_L5_invitrodb, ar_L5_invitrodb_viability)
+  dat_cast <- tcpl_to_model_dat(dat, pathway = "AR")
+  dat_auc <- er_model_light(dat = dat_cast, chem = "C68962", pathway = "AR")
+
+  pseudo_receptor_columns <- c("AUC.R3", "AUC.R4", "AUC.R5", "AUC.R6",
+                               "AUC.R7", "AUC.A1", "AUC.A2", "AUC.A3",
+                               "AUC.A4", "AUC.A5", "AUC.A7", "AUC.A8",
+                               "AUC.A9", "AUC.A10", "AUC.A11")
+
+  auc_names <- c("AUC.Agonist", "AUC.Antagonist",
+                 pseudo_receptor_columns, "code")
+
+  setnames(dat_auc, auc_names)
+
+  pander(dat_auc[, .(code, AUC.Agonist, AUC.Antagonist)])
+```
+
+<table style="width:51%;">
+<colgroup>
+<col width="9%" />
+<col width="19%" />
+<col width="22%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">code</th>
+<th align="center">AUC.Agonist</th>
+<th align="center">AUC.Antagonist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">C68962</td>
+<td align="center">0.9414</td>
 <td align="center">0</td>
 </tr>
 </tbody>

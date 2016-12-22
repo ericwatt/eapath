@@ -33,8 +33,26 @@ test_that("Expected AUC ER values", {
                tolerance = 1e-7, scale = 1)
 })
 
+test_that("Viability Filtering Works", {
+  dat <- via_filter(ar_L5_invitrodb, ar_L5_invitrodb_viability)
+  dat_compare <- merge(ar_L5_invitrodb,
+                       dat[, list(m4id, hitcadj = hitc, modl_ga_via)],
+                       by = "m4id")
+
+  # if hitc changed from 1 to 0, modl_ga > modl_ga_via
+ expect_identical(dat_compare[!(hitc == hitcadj), m4id],
+                  dat_compare[!(hitc == hitcadj) & modl_ga > modl_ga_via, m4id]
+
+ )
+
+ # if modl_ga > modl_ga_via, hitc == 0
+ expect_equal(sum(dat_compare[modl_ga > modl_ga_via, hitcadj]), 0)
+
+})
+
 test_that("Expected AUC AR values", {
-  dat_cast <- tcpl_to_model_dat(ar_L5_invitrodb, pathway = "AR")
+  dat <- via_filter(ar_L5_invitrodb, ar_L5_invitrodb_viability)
+  dat_cast <- tcpl_to_model_dat(dat, pathway = "AR")
   codes <- c("C68962")
   auc_results <- lapply(codes,
                         er_model_light,
