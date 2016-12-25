@@ -1,8 +1,6 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 [![Travis-CI Build Status](https://travis-ci.org/ericwatt/eapath.svg?branch=master)](https://travis-ci.org/ericwatt/eapath) [![Coverage Status](https://img.shields.io/codecov/c/github/ericwatt/eapath/master.svg)](https://codecov.io/github/ericwatt/eapath?branch=master) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/eapath)](https://cran.r-project.org/package=eapath)
 
-    ## Warning: package 'data.table' was built under R version 3.3.2
-
 eapath: Computational Models for Estrogen and Androgen Receptor Activity
 ------------------------------------------------------------------------
 

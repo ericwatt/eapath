@@ -10,7 +10,7 @@ output:
 [![Coverage Status](https://img.shields.io/codecov/c/github/ericwatt/eapath/master.svg)](https://codecov.io/github/ericwatt/eapath?branch=master)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/eapath)](https://cran.r-project.org/package=eapath)
 
-```{r, echo = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
