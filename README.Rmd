@@ -16,27 +16,43 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "README-"
 )
-library(eapath)
-library(pander)
-library(data.table)
 ```
+
 
 ## eapath: Computational Models for Estrogen and Androgen Receptor Activity
 
+### Installation
+
 eapath contains both data and code to calculate estrogen and androgen AUC values. 
-It can be installed using devtools:
+
+It can be installed using devtools. 
+After installing devtools, run the following to install the newest development version of eapath.
+
 
 ```
+# install.packages("devtools")
 devtools::install_github("ericwatt/eapath")
+```
+
+To install all of the suggested packages as well, which are used to develop the package and run some of the examples, include the option `dependencies = TRUE`.
+
+```
+devtools::install_github("ericwatt/eapath", dependencies = TRUE)
+```
+
+```{r, warning = FALSE}
+library(eapath)
+library(data.table)
 ```
 
 ## Estrogen receptor calculation
 
 The package includes all ToxCast data for ER assays. 
 This can be accessed in `er_L5_prod_ext_v2`.
+An example of this data for one chemical:
 
-```{r}
-pander(head(er_L5_prod_ext_v2), split.table = Inf)
+```{r, echo = FALSE}
+pander::pander(er_L5_prod_ext_v2[code == "C500389"], split.table = Inf)
 ```
 
 The first step is to restructure the data using function `tcpl_to_model_dat`.
@@ -72,30 +88,32 @@ Then the columns are named
   setnames(dat_auc, auc_names)
 ```
 
-```{r}
-pander(dat_auc[, .(code, AUC.Agonist, AUC.Antagonist)])
+```{r, echo = FALSE}
+pander::pander(dat_auc[, .(code, AUC.Agonist, AUC.Antagonist)])
 ```
 
 ## Androgen receptor calculation
 
 While the pathway and assay lists are different, the AR model is run by the user in much the same way as the ER model.
 One additional change is that the assay hitcalls need to be filtered by the viability assays.
-Both datasets needed to do this are included, `ar_L5_invitrodb` contains the data for the 11 assays to run the model and `ar_L5_invitrodb_viability` has the viability data from `TOX21_AR_BLA_Antagonist_viability` and `TOX21_AR_LUC_MDAKB2_Antagonist2_viability` assays which are used to filter the hit calls for T`OX21_AR_BLA_Antagonist_ratio` and `TOX21_AR_LUC_MDAKB2_Antagonist2` assays. 
+Both datasets needed to do this are included, `ar_L5_invitrodb` contains the data for the 11 assays to run the model and `ar_L5_invitrodb_viability` has the viability data from `TOX21_AR_BLA_Antagonist_viability` and `TOX21_AR_LUC_MDAKB2_Antagonist2_viability` assays which are used to filter the hit calls for `TOX21_AR_BLA_Antagonist_ratio` and `TOX21_AR_LUC_MDAKB2_Antagonist2` assays. 
 
 ```{r}
-  dat <- via_filter(ar_L5_invitrodb, ar_L5_invitrodb_viability)
-  dat_cast <- tcpl_to_model_dat(dat, pathway = "AR")
-  dat_auc <- er_model_light(dat = dat_cast, chem = "C68962", pathway = "AR")
+dat <- via_filter(ar_L5_invitrodb, ar_L5_invitrodb_viability)
+dat_cast <- tcpl_to_model_dat(dat, pathway = "AR")
+dat_auc <- er_model_light(dat = dat_cast, chem = "C68962", pathway = "AR")
 
-  pseudo_receptor_columns <- c("AUC.R3", "AUC.R4", "AUC.R5", "AUC.R6",
-                               "AUC.R7", "AUC.A1", "AUC.A2", "AUC.A3",
-                               "AUC.A4", "AUC.A5", "AUC.A7", "AUC.A8",
-                               "AUC.A9", "AUC.A10", "AUC.A11")
+pseudo_receptor_columns <- c("AUC.R3", "AUC.R4", "AUC.R5", "AUC.R6",
+                             "AUC.R7", "AUC.A1", "AUC.A2", "AUC.A3",
+                             "AUC.A4", "AUC.A5", "AUC.A7", "AUC.A8",
+                             "AUC.A9", "AUC.A10", "AUC.A11")
 
-  auc_names <- c("AUC.Agonist", "AUC.Antagonist",
-                 pseudo_receptor_columns, "code")
+auc_names <- c("AUC.Agonist", "AUC.Antagonist",
+               pseudo_receptor_columns, "code")
 
-  setnames(dat_auc, auc_names)
+setnames(dat_auc, auc_names)
+```
 
-  pander(dat_auc[, .(code, AUC.Agonist, AUC.Antagonist)])
-  ```
+```{r, echo = FALSE}
+pander::pander(dat_auc[, .(code, AUC.Agonist, AUC.Antagonist)])
+```
